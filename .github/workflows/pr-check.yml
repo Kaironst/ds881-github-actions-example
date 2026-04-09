@@ -1,0 +1,27 @@
+name: "on-pr"
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  run-pytest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: baixa código
+        uses: actions/checkout@v4
+
+      - name: instala python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: instala dependências
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r
+
+      - name: executa testes
+        run: pytest
